@@ -1,0 +1,2 @@
+# goMerge
+merge js,css
