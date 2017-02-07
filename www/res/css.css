@@ -1,0 +1,11 @@
+html,body{
+    margin:0;width:100%;height:100%;
+
+}
+html{font-size:100px;}
+body{
+    font-size:.14rem;word-break:break-all;
+}
+h1{
+    color: #af9001;
+}
