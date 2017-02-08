@@ -56,11 +56,7 @@ func (p *Project)Init(fileName string)error{
 
 	p.MtoList=map[string]*Mto{}
 	s2:=p.clearNotes(string(outText))
-	md := md5.New()
-	md.Write([]byte(fileName))
-	s := md.Sum(nil)
-	smh := hex.EncodeToString(s)
-	p.Hex = smh
+	p.Hex = getHex(fileName)
 	p.FileName = fileName
 	p.RootPath = fileName[0:strings.LastIndex(fileName, "\\") + 1]
 	p.MustCompile([]byte(s2))
@@ -162,6 +158,10 @@ func (t *Project)Merge() {
 	t.UpdateTime=time.Now()
 	t.IsUpdate=false
 	fmt.Printf("完毕!\n")
+}
+
+func (t *Project)Rebuild(){
+
 }
 
 //格式化文字

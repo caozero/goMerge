@@ -37,6 +37,20 @@ func (t *WatchFile)setProjectUpdate(manager *Manager){
 
 }
 
+func (t *WatchFile)clear(projectHex string){
+	for k,v:=range t.ProjectHex{
+		if v==projectHex{
+			if len(t.ProjectHex)==1{
+				t.ProjectHex=[]string{}
+			}else{
+				t.ProjectHex=append(t.ProjectHex[:k],t.ProjectHex[k+1:]...)
+			}
+			return
+		}
+	}
+
+}
+
 type Watcher struct {
 	Hex string
 	Root string
@@ -148,4 +162,15 @@ func (p *Watcher)OnModify(name string){
 		}
 	}
 	p.manager.Save()
+}
+
+func (t *Watcher)clear(projectHex string){
+	for _,v:=range t.FileList{
+		v.clear(projectHex)
+	}
+	for k,v:=range t.FileList{
+		if len(v.ProjectHex)==0{
+			delete(t.FileList,k)
+		}
+	}
 }

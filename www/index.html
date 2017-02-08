@@ -37,7 +37,7 @@
         width:100%;position: absolute;
     }
     .button{
-        line-height:2em;padding:.5em;background-color: #6487ff;margin:0 .5em;color:#fff;cursor: pointer;
+        line-height:2em;padding:.5em;background-color: #6487ff;margin:0 .5em;color:#fff;cursor: pointer;text-shadow: 0.01rem 0.01rem 0.03rem #000;
     }
     #inputBar{
         position: absolute;left: 1%;
@@ -177,24 +177,27 @@
         right: 0;
         margin: 0;
     }
-    .project.isUpdate .topBar span{
-        display: inline-block;
-    }
     .topBar span{
-        display: none;
-        width: .3rem;
-        height: .3rem;
+        display: inline-block;
+        height: .33rem;
         color: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.13);
         line-height: .3rem;
         text-align: center;
-        font-size: .24rem;
+        font-size: .12rem;
         cursor: pointer;
-        padding: 0;
-        margin: 0;
+        padding: 0 .5em;
+        margin: 0 1px 0 0;    background-color: rgba(255, 255, 255, 0.31);
+
     }
     .topBar span:hover{
         background-color: #6487ff;
+    }
+    .project .topBar span.update{
+        display: none;
+    }
+    .project.isUpdate .topBar span.update{
+        display: inline-block;
+        background-color: #bb0000;
     }
 </style>
 </html>

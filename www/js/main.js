@@ -72,6 +72,7 @@ __.log = {
         this.table = this.el.find('table');
     }
     , add: function (p) {
+        if(!p['msg'].length)return;
         var msg = '';
         if (typeof p == 'object') {
             var c = "success";
@@ -183,7 +184,7 @@ __.project = {
         var isUpdate=p['IsUpdate']?' isUpdate':'';
         var d = $('<div class="project'+isUpdate+'" id="' + p['Hex'] + '">' +
             '<p class="projectTitle">' + p['FileName'] + '</p>' +
-            '<p class="topBar"><span class="button update">U</span></p>' +
+            '<p class="topBar"><span class="button rebuild">rebuild</span><span class="button delete">delete</span><span class="button update">update</span></p>' +
             '<ul class="mto">' +
             '</ul>' +
             '</div>');
@@ -302,7 +303,14 @@ __.bindEvent = function () {
             var id = _t.parents('.project').attr('id');
             __.send({cmd: 'update', hex: id});
         }
-        console.log('button click');
+        if (_t.hasClass('rebuild')) {
+            var id = _t.parents('.project').attr('id');
+            __.send({cmd: 'rebuild', hex: id});
+        }
+        if (_t.hasClass('delete')) {
+            var id = _t.parents('.project').attr('id');
+            __.send({cmd: 'delete', hex: id});
+        }
         return false;
     })
 };
