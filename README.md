@@ -7,6 +7,7 @@ HTML5在游戏方面有不少引擎,但对于新事物来说,引擎本身就在�
 用golang写了个小程序,识别代码里需要合并的文件
 
 project/index.html包含以下内容
+
 ```html
 <script src="../codeBase/scr/__-1.0.js" mergeTo="js/game.js"></script>
 <script src="../codeBase/scr/Actor-2.0.js" mergeTo="js/game.js"></script>
@@ -16,7 +17,8 @@ project/index.html包含以下内容
 <link type="text/css" rel="stylesheet" href="../codeBase/scr/css/__-1.0.css" mergeTo="res/css.css"/>
     <link type="text/css" rel="stylesheet" href="../codeBase/scr/css/textLine-1.0.css" mergeTo="res/css.css"/>
 <link type="text/css" rel="stylesheet" href="res/self.css" mergeTo="res/css.css"/>
-//html
+```
+
 本地开发使用分离的小文件,项目在线使用合并后的文件.只要把index.html文件的本地文件地址录入程序即可.
 然后加入了监控文件改动功能,这样任意一个引入的文件修改了,都会设置引入这个文件的所有项目为需要更新状态,选择这些项目更新,会重新合并生成目标文件,此时会在文件的顶部用注释写入更新时间,为了识别缓存.
 工作中只需要修改代码,然后列出需要更新的项目,可能会有好几个项目,选择更新即可.不用过多操心那些项目与引入功能代码的问题.
